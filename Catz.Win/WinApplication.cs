@@ -9,9 +9,7 @@ using DevExpress.Persistent.BaseImpl.EFCore.AuditTrail;
 using Microsoft.EntityFrameworkCore;
 
 namespace Catz.Win;
-// For more typical usage scenarios, be sure to check out https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.Win.WinApplication._members
-
-public class CatzWindowsFormsApplication : WinApplication
+ public class CatzWindowsFormsApplication : WinApplication
 {
     public CatzWindowsFormsApplication()
     {
@@ -56,10 +54,7 @@ public class CatzWindowsFormsApplication : WinApplication
         object sender,
         DevExpress.ExpressApp.DatabaseVersionMismatchEventArgs e)
     {
-#if EASYTEST
-        e.Updater.Update();
-        e.Handled = true;
-#else
+ 
         if(System.Diagnostics.Debugger.IsAttached)
         {
             e.Updater.Update();
@@ -77,6 +72,6 @@ public class CatzWindowsFormsApplication : WinApplication
             }
             throw new InvalidOperationException(message);
         }
-#endif
+ 
     }
 }
